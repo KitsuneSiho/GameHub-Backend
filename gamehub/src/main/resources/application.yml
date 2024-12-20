@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/gamehub?useSSL=false&serverTimezone=Asia/Seoul
+    url: jdbc:mysql://localhost:3306/gamehub?useSSL=false&serverTimezone=Asia/Seoul&Encoding=UTF-8
     username: root
-    password: 1234
+    password: qwe123
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   thymeleaf:

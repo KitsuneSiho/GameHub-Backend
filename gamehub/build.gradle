@@ -35,5 +35,5 @@ dependencies {
 }
 
 tasks.named('test') {
-
+	
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.gamehub.dto.UserDTO;
+import com.example.gamehub.entity.UserEntity;
 import com.example.gamehub.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -24,9 +24,9 @@ public class UserController{
 
     //회원가입 API
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody UserDTO userDTO){
-        if(userService.isUserIdAvailable(userDTO.getUserId())){
-            userService.save(userDTO); //아이디를 쓸 수 있으면 DTO 에 사용자정보 저장
+    public ResponseEntity<String> registerUser(@RequestBody UserEntity userEntity){
+        if(userService.isUserIdAvailable(userEntity.getUserId())){
+            userService.save(userEntity); //아이디를 쓸 수 있으면 Entity 에 사용자정보 저장
             return ResponseEntity.ok("회원가입 성공!!");
         }else{
             return ResponseEntity.badRequest().body("회원가입에 실패했습니다.");

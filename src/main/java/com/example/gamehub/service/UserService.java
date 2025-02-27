@@ -27,6 +27,13 @@ public class UserService {
     public boolean isUserIdAvailable(String userId) {
         return !userRepository.existsByUserId(userId);
     }
+    public boolean isUserEmailAvailable(String userEmail) {
+        return !userRepository.existsByUserEmail(userEmail);
+    }
+    
+    public boolean isUserNameAvailable(String userName) {
+        return !userRepository.existsByUserName(userName);
+    }
 }
 
 

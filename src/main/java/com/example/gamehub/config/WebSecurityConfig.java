@@ -14,9 +14,12 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .cors() // CORS 설정 활성화
-            .and()
-            .csrf().disable(); // CSRF 비활성화
+                .cors() // CORS 설정 활성화
+                .and()
+                .csrf().disable() // CSRF 비활성화 (필요 시 적절히 설정)
+                .authorizeRequests(authorize -> authorize
+                        .anyRequest().permitAll() // 모든 요청 허용 (필요에 따라 수정)
+                );
 
         return http.build();
     }
@@ -27,6 +30,7 @@ public class WebSecurityConfig {
         configuration.addAllowedOrigin("http://localhost:5173"); // 프론트엔드 주소 허용
         configuration.addAllowedMethod("*"); // 모든 HTTP 메서드 허용 (GET, POST 등)
         configuration.addAllowedHeader("*"); // 모든 헤더 허용
+        configuration.setAllowCredentials(true); // 자격 증명 허용
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration); // 모든 경로에 대해 CORS 설정 적용
         return source;
